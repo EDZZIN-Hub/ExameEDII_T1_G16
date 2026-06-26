@@ -1,4 +1,4 @@
-/* Define um produto do mercado agrÌcola digital. */
+/* Define um produto do mercado agr√≠cola digital. */
 typedef struct {
     int codigo;
     char nome[50];
@@ -6,14 +6,14 @@ typedef struct {
     float preco;
     int quantidade;
 } Produto;
-/* NÛ da AVL que armazena um produto e mantÈm altura para balanceamento. */
+/* N√≥ da AVL que armazena um produto e mant√©m altura para balanceamento. */
 typedef struct no {
     Produto produto;
     int altura;
     struct no *esq;
     struct no *dir;
 } No;
-/* Registo de utilizador, com credenciais e invent·rio prÛprio. */
+/* Registo de utilizador, com credenciais e invent√°rio pr√≥prio. */
 typedef struct {
     char nome[50];
     char email[50];
@@ -21,67 +21,67 @@ typedef struct {
     char tipo[20];
     No *inventario;
 } Usuario;
-/* NÛ de lista ligada para itens do carrinho de compras. */
+/* N√≥ de lista ligada para itens do carrinho de compras. */
 typedef struct ItemCarrinho {
     Produto produto;
     int quantidade;
     char vendedorEmail[50];
     struct ItemCarrinho *prox;
 } ItemCarrinho;
-/* Estrutura de bucket encadeado para indexaÁ„o r·pida de produtos. */
+/* Estrutura de bucket encadeado para indexa√ß√£o r√°pida de produtos. */
 typedef struct HashNo HashNo;
 /* Cria um produto a partir da entrada do utilizador. */
 Produto criarProduto(void);
 /* Estruturas globais partilhadas pelos menus do sistema. */
 extern No *listaProdutos;          /* Raiz da AVL de produtos. */
 extern ItemCarrinho *carrinho;     /* Lista ligada do carrinho atual. */
-extern HashNo **tabelaHash;        /* Tabela hash para pesquisa r√°pida. */
+extern HashNo **tabelaHash;        /* Tabela hash para pesquisa r√É¬°pida. */
 extern int hashTamanho;            /* N√∫mero de posi√ß√µes da tabela hash. */
 extern int hashQuantidade;         /* Quantidade de elementos atualmente indexados. */
 extern Usuario *usuarios;          /* Lista dinamica de utilizadores registados. */
-extern int totalUsuarios;          /* N˙mero de utilizadores atualmente guardados. */
+extern int totalUsuarios;          /* N√∫mero de utilizadores actualmente guardados. */
 extern int capacidadeUsuarios;     /* Capacidade atual da lista de utilizadores. */
-extern int indiceUsuarioAtual;     /* Õndice do utilizador autenticado na sess„o actual. */
+extern int indiceUsuarioAtual;     /* √çndice do utilizador autenticado na sess√£o actual. */
 void limparBufferEntrada(void);   /* Limpa o buffer de entrada para leituras futuras. */
-void mostrarTitulo(const char *titulo); /* Mostra um tÌtulo formatado no ecr„. */
+void mostrarTitulo(const char *titulo); /* Mostra um t√≠tulo formatado no ecr√£. */
 void mostrarProdutoFormatado(const Produto *produto); /* Mostra os detalhes de um produto. */
 int inicializarHash(int tamanho); /* Inicializa a tabela hash com o tamanho informado. */
-int garantirHashInicializada(void); /* Garante que a tabela hash est· pronta para uso. */
+int garantirHashInicializada(void); /* Garante que a tabela hash est√° pronta para uso. */
 int maximo(int a, int b); /* Retorna o maior de dois inteiros. */
-int indiceHashComTamanho(int codigo, int tamanho); /* Calcula o Ìndice hash para um cÛdigo e tamanho especÌficos. */
+int indiceHashComTamanho(int codigo, int tamanho); /* Calcula o √≠ndice hash para um c√≥digo e tamanho espec√≠ficos. */
 int alturaNo(No *no); /* Retorna a altura de um n√≥ AVL. */
-int fatorBalanceamento(No *no); /* Retorna o fator de balanceamento de um nÛ AVL. */
-No *criarNoAVL(Produto p); /* Cria um novo nÛ AVL com o produto informado. */
-No *rotacaoDireita(No *y); /* Executa rotaÁ„o direita em um nÛ AVL. */
-No *rotacaoEsquerda(No *x); /* Executa rotaÁ„o esquerda em um nÛ AVL. */
-int indiceHash(int codigo); /* Calcula o √≠ndice hash para o cÛdigo usando o tamanho atual. */
+int fatorBalanceamento(No *no); /* Retorna o fator de balanceamento de um n√≥ AVL. */
+No *criarNoAVL(Produto p); /* Cria um novo n√≥ AVL com o produto informado. */
+No *rotacaoDireita(No *y); /* Executa rota√ß√£o direita em um n√≥ AVL. */
+No *rotacaoEsquerda(No *x); /* Executa rota√ß√£o esquerda em um n√≥ AVL. */
+int indiceHash(int codigo); /* Calcula o √ç¬≠ndice hash para o c√≥digo usando o tamanho atual. */
 int redimensionarHash(int novoTamanho); /* Redimensiona a tabela hash para um tamanho maior. */
 void hashAtualizar(No *no); /* Insere ou atualiza a entrada na tabela hash. */
 void hashRemover(int codigo); /* Remove a entrada da tabela hash pelo c√≥digo. */
 No *hashBuscar(int codigo); /* Pesquisa um produto na tabela hash pelo c√≥digo. */
 void limparHash(void); /* Limpa as entradas da tabela hash sem liberar sua estrutura. */
 void libertarHash(void); /* Libera completamente a estrutura da tabela hash. */
-No *menorNo(No *raiz); /* Retorna o menor n√≥ em uma sub√°rvore AVL. */
-No *balancearNo(No *raiz); /* Rebalanceia um n√≥ AVL ap√≥s inser√ß√£o ou remocao. */
+No *menorNo(No *raiz); /* Retorna o menor n√≥ em uma subarvore AVL. */
+No *balancearNo(No *raiz); /* Rebalanceia um n√≥ AVL ap√≥s inser√ß√£o ou remo√ß√£o. */
 No *inserirNoAVL(No *raiz, Produto p, No **noAlterado, int *novoProduto); /* Insere ou atualiza um produto na AVL. */
 No *removerNoAVL(No *raiz, int codigo, int controlarHash); /* Remove um produto da AVL e atualiza a hash se necess√°rio. */
 void listarEmOrdem(No *raiz); /* Percorre a AVL em ordem crescente e mostra os produtos. */
 void guardarEmOrdem(FILE *fp, No *raiz); /* Grava a AVL em ficheiro em ordem crescente. */
-void libertarAVL(No *raiz); /* Libera a memÛria alocada pela AVL. */
+void libertarAVL(No *raiz); /* Libera a mem√≥ria alocada pela AVL. */
 void limparCarrinho(ItemCarrinho **carrinhoAtual); /* Remove todos os itens do carrinho. */
-int quantidadeNoCarrinho(ItemCarrinho *carrinhoAtual, int codigo, const char *vendedorEmail); /* Retorna quantas unidades de um produto de um vendedor estao no carrinho. */
+int quantidadeNoCarrinho(ItemCarrinho *carrinhoAtual, int codigo, const char *vendedorEmail); /* Retorna quantas unidades de um produto de um vendedor est√£o no carrinho. */
 void inserirProduto(No **lista, Produto p); /* Insere ou atualiza um produto no catalogo global. */
-void listarProdutos(No *lista); /* Lista produtos disponÌveis no mercado. */
+void listarProdutos(No *lista); /* Lista produtos dispon√≠veis no mercado. */
 void listarCatalogoMercado(void); /* Lista os produtos do mercado agrupados por banca/vendedor. */
-void listarBancas(void); /* Lista as bancas/vendedores cadastrados para selecÁ„o do cliente. */
+void listarBancas(void); /* Lista as bancas/vendedores cadastrados para selec√ß√£o do cliente. */
 int selecionarBanca(void); /* Permite ao cliente escolher uma banca antes de comprar. */
-No *buscarProduto(No *lista, int codigo); /* Procura um produto na AVL por cÛdigo. */
+No *buscarProduto(No *lista, int codigo); /* Procura um produto na AVL por c√≥digo. */
 No *buscarProdutoNoMercado(int codigo, int *indiceVendedor); /* Procura um produto em todos os vendedores do mercado. */
-void removerProduto(No **lista, int codigo); /* Remove um produto do cat·logo global. */
+void removerProduto(No **lista, int codigo); /* Remove um produto do cat√°logo global. */
 void adicionarCarrinho(ItemCarrinho **carrinhoAtual, Produto produto, int quantidade, const char *vendedorEmail); /* Adiciona ou atualiza um item no carrinho. */
 void mostrarCarrinho(ItemCarrinho *carrinhoAtual); /* Exibe o conteudo do carrinho e o total. */
 void finalizarCompra(ItemCarrinho **carrinhoAtual); /* Finaliza a compra, regista a venda e atualiza o stock. */
-void guardarProdutos(No *lista);			 /* Guarda os produtos do cat√°logo para ficheiro. */
+void guardarProdutos(No *lista);			 /* Guarda os produtos do cat√É¬°logo para ficheiro. */
 void carregarProdutos(No **lista);			 /* Carrega produtos guardados do ficheiro*/	
 void carregarUsuarios(void);                 /* Carrega os utilizadores do ficheiro para a memria. */
 void guardarUsuarios(void);                  /* Guarda os utilizadores atuais para ficheiro. */
@@ -94,7 +94,7 @@ void inserirProdutoNoInventarioAtual(Produto p); /* Regista um produto no stock 
 void removerProdutoDoInventarioAtual(int codigo); /* Remove um produto do stock do vendedor autenticado. */
 void listarInventarioAtual(void);           /* Mostra o stock do utilizador autenticado. */
 No *buscarProdutoNoInventarioAtual(int codigo); /* Procura um produto no stock do utilizador autenticado. */
-int existeUsuario(const char *email);        /* Verifica se um email ja existe. */
+int existeUsuario(const char *email);        /* Verifica se um email j√° existe. */
 int autenticarUsuario(const char *email, const char *senha, Usuario *usuario); /* Valida credenciais de acesso. */
 void menuCliente(void); 					 /*Menu cliente*/
 void menuVendedor(void);				 	 /*Menu vendedor*/
