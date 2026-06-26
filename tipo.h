@@ -81,7 +81,7 @@ void removerProduto(No **lista, int codigo); /* Remove um produto do catálogo g
 void adicionarCarrinho(ItemCarrinho **carrinhoAtual, Produto produto, int quantidade, const char *vendedorEmail); /* Adiciona ou atualiza um item no carrinho. */
 void mostrarCarrinho(ItemCarrinho *carrinhoAtual); /* Exibe o conteudo do carrinho e o total. */
 void finalizarCompra(ItemCarrinho **carrinhoAtual); /* Finaliza a compra, regista a venda e atualiza o stock. */
-void guardarProdutos(No *lista);			 /* Guarda os produtos do catÃ¡logo para ficheiro. */
+void guardarProdutos(No *lista);			 /* Guarda os produtos do catálogo para ficheiro. */
 void carregarProdutos(No **lista);			 /* Carrega produtos guardados do ficheiro*/	
 void carregarUsuarios(void);                 /* Carrega os utilizadores do ficheiro para a memria. */
 void guardarUsuarios(void);                  /* Guarda os utilizadores atuais para ficheiro. */
